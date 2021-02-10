@@ -20,5 +20,76 @@ package lesson2;
  */
 
 public class Task1 {
+    private int age = 1;
+    private String name;
+    private String ageGroup;
+/////////////////////////////////////////////////////////////////// Getter
+    public int getAge() {
+        return age;
+    }
+    public String getName() {
+        return name;
+    }
+    public String getageGroup(){
+        return ageGroup;
+    }
+/////////////////////////////////////////////////////////////////////// Setter Age
+    public void setAge(int age){
+        if(age > 0 && age < 100){
+            this.age = age;
+            if(age >= 1 && age < 15){
+                setAgeGroup("child");
+            }
+            else if(age >= 15 && age <= 25){
+                setAgeGroup("student");
+            }
+            else if(age > 26 && age <= 65){
+                setAgeGroup("worker");
+            }
+            else if(age >= 66){
+                setAgeGroup("pensioner");
+            }
+        }
+        else{
+            System.out.println("Incorrect age. Age must be from 1 to 100 years ");
+            setAgeGroup("Age group is undefined");
+        }
+    }
+    //////////////////////////////////////////////////////////////////////////// Setter Name
+
+    public void setName(String name){
+        if(name == null || name.isEmpty() || name.isBlank()){
+            this.name = "Name is empty or contain only space symbols";
+            System.out.println("Incorrect name. Name could not be empty");
+        }
+
+        else if(name.length() < 3 || name.length() > 50){
+            this.name = "Incorrect name";
+            System.out.println("Incorrect name. Name must be from 3 to 50 symbols ");
+        }
+        else if(name.length() >= 3 && name.length() <= 50){
+
+            if (name.substring(0,1).isBlank()) {
+                if(name.substring(1,2).isBlank()){
+                    this.name = name.substring(2,3).toUpperCase();
+                }
+                else{
+                    this.name = name.substring(1,2).toUpperCase();
+                }
+            }
+            else{
+                this.name = name.substring(0,1).toUpperCase();
+            }
+        }
+        else{
+            this.name = "Name is NULL";
+            System.out.println("Incorrect name. Name could not be NULL");
+
+        }
+    }
+    //////////////////////////////////////////////////////////////////////////// Setter ageGroup
+    private void setAgeGroup(String ageGroup){
+        this.ageGroup = ageGroup;
+    }
 
 }
